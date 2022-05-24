@@ -1,0 +1,26 @@
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: wrap;
+  background: rgb(242,244,244);
+  background: -moz-radial-gradient(circle, rgba(242,244,244,1) 0%, rgba(246,244,244,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(242,244,244,1) 0%, rgba(246,244,244,1) 100%);
+  background: radial-gradient(circle, rgba(242,244,244,1) 0%, rgba(246,244,244,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2f4f4",endColorstr="#f6f4f4",GradientType=1);
+}
+header a:last-child{
+  margin: 0 0 0 auto;
+}
+.header--button{
+  padding: 1.2em 1.5em;
+  transition: 0.2s background-color ease-out;
+}
+.header--button:hover{
+  background-color: rgb(238,240,240);
+  color: #020202;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
