@@ -1,6 +1,6 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
-import styles from "./Client.module.css"
+import { Link } from "react-router-dom"
+import styles from "../Utility/Table.module.css"
 
 export default function Client(props) {
   return (

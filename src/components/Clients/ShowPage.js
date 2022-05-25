@@ -13,9 +13,9 @@ export default function ShowPage() {
   }, []);
 
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <ClientTable clients={clients} />
-    </div>
+    </React.Fragment>
   )
 }

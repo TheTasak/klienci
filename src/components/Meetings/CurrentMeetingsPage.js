@@ -1,6 +1,9 @@
 import React from "react"
 import axios from 'axios';
 import Header from "../Utility/Header"
+import CurrentMeeting from "./CurrentMeeting"
+
+import styles from "../Utility/Table.module.css"
 
 export default function CurrentMeetingsPage() {
   const [meetings, setMeetings] = React.useState([]);
@@ -10,15 +13,27 @@ export default function CurrentMeetingsPage() {
          .catch( error => console.log(error))
          .then( () => {});
   }, []);
-  const obj = meetings.map(meeting => {
-    return (
-      <div key={meeting.id}>{meeting.data}</div>
-    )
-  })
+  const obj = meetings.map((meeting, i) => <CurrentMeeting key={meeting.id} order={i} {...meeting}/>)
   return (
-    <div>
+    <React.Fragment>
       <Header />
-      {obj}
-    </div>
+      <div className={styles["table-container"]}>
+        <table>
+          <thead>
+            <tr>
+              <td></td>
+              <td>Imię i nazwisko</td>
+              <td>Telefon</td>
+              <td>Data</td>
+              <td>Komentarz</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            {obj}
+          </tbody>
+        </table>
+      </div>
+    </React.Fragment>
   )
 }
