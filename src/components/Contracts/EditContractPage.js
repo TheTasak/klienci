@@ -1,14 +1,14 @@
 import React from "react"
-import LinkForm from "./LinkForm"
+import ContractForm from "./ContractForm"
 import { useParams } from "react-router-dom";
 import Header from "../Utility/Header"
 
-export default function AddLinkPage(props) {
+export default function EditContractPage(props) {
   let params = useParams();
   return (
     <React.Fragment>
       <Header />
-      <LinkForm clientId={params.id}/>
+      <ContractForm contractId={params.id}/>
     </React.Fragment>
   )
 }

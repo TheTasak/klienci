@@ -42,7 +42,7 @@ export default function ClientDataPage() {
           </tbody>
         </table>
       </div>
-      <h2 className={styles["table-title"]}>Powiązania</h2>
+      <h2 className={styles["table-title"]}>Rekomendacje</h2>
       <div className={styles["table-container"]}>
         <table>
           <thead>

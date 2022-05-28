@@ -1,5 +1,5 @@
 import React from "react"
-import AddMeetingForm from "./AddMeetingForm"
+import MeetingForm from "./MeetingForm"
 import { useParams } from "react-router-dom";
 import Header from "../Utility/Header"
 
@@ -8,7 +8,7 @@ export default function AddMeetingPage(props) {
   return (
     <React.Fragment>
       <Header />
-      <AddMeetingForm clientId={params.id}/>
+      <MeetingForm clientId={params.id}/>
     </React.Fragment>
   )
 }

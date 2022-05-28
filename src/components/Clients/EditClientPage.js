@@ -1,14 +1,14 @@
 import React from "react"
-import LinkForm from "./LinkForm"
+import ClientForm from "./ClientForm"
 import { useParams } from "react-router-dom";
 import Header from "../Utility/Header"
 
-export default function AddLinkPage(props) {
+export default function EditClientPage() {
   let params = useParams();
   return (
     <React.Fragment>
       <Header />
-      <LinkForm clientId={params.id}/>
+      <ClientForm clientId={params.id}/>
     </React.Fragment>
   )
 }

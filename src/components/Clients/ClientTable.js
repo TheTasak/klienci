@@ -11,6 +11,16 @@ export default function ClientTable(props) {
   return (
     <div className={styles["table-container"]}>
       <table>
+        <thead>
+          <tr>
+            <td></td>
+            <td>Imię</td>
+            <td>Nazwisko</td>
+            <td className={styles["table-element_hide"]}>Telefon</td>
+            <td className={styles["table-element_hide"]}>Email</td>
+            <td></td>
+          </tr>
+        </thead>
         <tbody>
           {obj}
         </tbody>
