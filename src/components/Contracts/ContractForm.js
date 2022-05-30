@@ -24,7 +24,7 @@ export default function ContractForm(props) {
       label: "Nie"
     }
   ];
-  
+
   React.useEffect(() => {
     axios.get('http://localhost/serwer_klienci/get_clients.php')
          .then( res => setClients(res.data))

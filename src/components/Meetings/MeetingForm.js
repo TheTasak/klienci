@@ -1,7 +1,8 @@
 import React from "react";
-import axios from 'axios';
-import DateTime from 'react-datetime';
 import {useNavigate} from "react-router-dom";
+import axios from 'axios';
+import Select from 'react-select'
+import DateTime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import moment from 'moment';
 import 'moment/locale/pl';
@@ -10,12 +11,32 @@ export default function MeetingForm(props) {
   const [formData, setFormData] = React.useState({
     datetime: "",
     client_id: props.clientId,
+    type: 0,
     comment: ""
   });
 
   const [clients, setClients] = React.useState([]);
   const currentClient = clients.filter((client) => client.id == props.clientId)[0];
   const navigate = useNavigate();
+
+  const options = [
+    {
+      value: 0,
+      label: "Pierwsze spotkanie"
+    },
+    {
+      value: 1,
+      label: "Drugie spotkanie"
+    },
+    {
+      value: 2,
+      label: "Doradctwo"
+    },
+    {
+      value: 3,
+      label: "Umowa"
+    }
+  ];
 
   React.useEffect(() => {
     axios.get('http://localhost/serwer_klienci/get_clients.php')
@@ -28,6 +49,7 @@ export default function MeetingForm(props) {
                setFormData({
                  datetime: res.data.data,
                  client_id: res.data.id_klienta,
+                 type: res.data.typ,
                  comment: res.data.komentarz == undefined ? "" : res.data.komentarz
                });
             })
@@ -51,6 +73,7 @@ export default function MeetingForm(props) {
       setFormData({
         datetime: "",
         client_id: props.clientId,
+        type: 0,
         comment: ""
       })
     }
@@ -63,6 +86,13 @@ export default function MeetingForm(props) {
           datetime: event.format("YYYY-MM-DD HH:mm:ss")
         }
       });
+    } else if(selector !== undefined && selector === "type") {
+      setFormData(oldFormData => {
+        return {
+          ...oldFormData,
+          type : event.value
+        }
+      });
     } else {
       setFormData(oldFormData => {
         return {
@@ -72,6 +102,7 @@ export default function MeetingForm(props) {
       });
     }
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Dodaj spotkanie</h2>
@@ -81,6 +112,10 @@ export default function MeetingForm(props) {
       <div className="fullWidth">
         <label htmlFor="datetime">Data i czas</label>
         <DateTime name="datetime" id="datetime" onChange={event => handleInput(event, "date")} value={Date.parse(formData.datetime)}/>
+      </div>
+      <div className="select">
+        <label>Typ spotkania: </label>
+        <Select options={options} name="type" placeholder="Wybierz:" defaultValue={formData.type} onChange={event => handleInput(event, "type")} />
       </div>
       <div>
         <label htmlFor="comment">Komentarz</label>
