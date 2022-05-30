@@ -8,7 +8,7 @@ import styles from "../Utility/Table.module.css"
 export default function CurrentMeetingsPage() {
   const [meetings, setMeetings] = React.useState([]);
   React.useEffect(() => {
-    axios.get('http://localhost/serwer_klienci/get_current_meetings.php')
+    axios.get('http://localhost/serwer_klienci/meetings/get_current_meetings.php')
          .then( res => setMeetings(res.data))
          .catch( error => console.log(error))
          .then( () => {});

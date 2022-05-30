@@ -7,7 +7,7 @@ export default function RemoveLinkPage() {
   let params = useParams();
   const navigate = useNavigate();
   function remove() {
-    axios.delete('http://localhost/serwer_klienci/delete_link.php?id=' + params.id)
+    axios.delete('http://localhost/serwer_klienci/links/delete_link.php?id=' + params.id)
          .then( res => console.log(res))
          .catch( error => console.log(error))
          .then( () => {});

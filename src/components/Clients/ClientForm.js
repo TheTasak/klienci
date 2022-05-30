@@ -11,7 +11,7 @@ export default function ClientForm(props) {
   })
   React.useEffect(() => {
     if(props.clientId !== undefined) {
-      axios.post('http://localhost/serwer_klienci/get_client.php?id=' + props.clientId)
+      axios.post('http://localhost/serwer_klienci/clients/get_client.php?id=' + props.clientId)
            .then( res => setFormData({
              name: res.data.imie,
              surname: res.data.nazwisko,
@@ -26,12 +26,12 @@ export default function ClientForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if(props.clientId !== undefined) {
-      axios.put('http://localhost/serwer_klienci/update_client.php?id=' + props.clientId, formData)
+      axios.put('http://localhost/serwer_klienci/clients/update_client.php?id=' + props.clientId, formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});
     } else {
-      axios.post('http://localhost/serwer_klienci/add_client.php', formData)
+      axios.post('http://localhost/serwer_klienci/clients/add_client.php', formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});

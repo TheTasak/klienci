@@ -13,7 +13,7 @@ export default function MeetingCalendarRedirect() {
   }
 
   React.useEffect(() => {
-    axios.post('http://localhost/serwer_klienci/add_calendar_event.php', obj)
+    axios.post('http://localhost/serwer_klienci/calendar/add_calendar_event.php', obj)
          .then( res => {
            if(res.status == 200) {
              navigate("/klienci");

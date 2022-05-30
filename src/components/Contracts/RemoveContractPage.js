@@ -7,7 +7,7 @@ export default function RemoveContractPage() {
   let params = useParams();
   const navigate = useNavigate();
   function remove() {
-    axios.delete('http://localhost/serwer_klienci/delete_contract.php?id=' + params.id)
+    axios.delete('http://localhost/serwer_klienci/contracts/delete_contract.php?id=' + params.id)
          .then( res => console.log(res))
          .catch( error => console.log(error))
          .then( () => {});

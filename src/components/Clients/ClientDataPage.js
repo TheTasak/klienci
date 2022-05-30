@@ -13,7 +13,7 @@ export default function ClientDataPage() {
   let params = useParams();
 
   React.useEffect(() => {
-    axios.get('http://localhost/serwer_klienci/get_client_data.php?id=' + params.id)
+    axios.get('http://localhost/serwer_klienci/clients/get_client_data.php?id=' + params.id)
          .then( res => setData(res.data))
          .catch( error => console.log(error))
          .then( () => {});

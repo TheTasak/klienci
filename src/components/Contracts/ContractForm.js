@@ -26,12 +26,12 @@ export default function ContractForm(props) {
   ];
 
   React.useEffect(() => {
-    axios.get('http://localhost/serwer_klienci/get_clients.php')
+    axios.get('http://localhost/serwer_klienci/clients/get_clients.php')
          .then( res => setClients(res.data))
          .catch( error => console.log(error))
          .then( () => {});
     if(props.contractId !== undefined) {
-      axios.get('http://localhost/serwer_klienci/get_contract.php?id=' + props.contractId)
+      axios.get('http://localhost/serwer_klienci/contracts/get_contract.php?id=' + props.contractId)
            .then( res => {
              setFormData({
                client_id: res.data.id_klienta,
@@ -51,12 +51,12 @@ export default function ContractForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if(props.contractId !== undefined) {
-      axios.put('http://localhost/serwer_klienci/update_contract.php?id=' + props.contractId, formData)
+      axios.put('http://localhost/serwer_klienci/contracts/update_contract.php?id=' + props.contractId, formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});
     } else {
-      axios.post('http://localhost/serwer_klienci/add_contract.php', formData)
+      axios.post('http://localhost/serwer_klienci/contracts/add_contract.php', formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});

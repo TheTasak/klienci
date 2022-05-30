@@ -7,7 +7,7 @@ export default function RemoveMeetingPage() {
   let params = useParams();
   const navigate = useNavigate();
   function remove() {
-    axios.delete('http://localhost/serwer_klienci/delete_meeting.php?id=' + params.id)
+    axios.delete('http://localhost/serwer_klienci/meetings/delete_meeting.php?id=' + params.id)
          .then( res => console.log(res))
          .catch( error => console.log(error))
          .then( () => {});

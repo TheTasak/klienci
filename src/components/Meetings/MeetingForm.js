@@ -39,12 +39,12 @@ export default function MeetingForm(props) {
   ];
 
   React.useEffect(() => {
-    axios.get('http://localhost/serwer_klienci/get_clients.php')
+    axios.get('http://localhost/serwer_klienci/clients/get_clients.php')
          .then( res => setClients(res.data))
          .catch( error => console.log(error))
          .then( () => {});
     if(props.meetingId !== undefined) {
-       axios.get('http://localhost/serwer_klienci/get_meeting.php?id=' + props.meetingId)
+       axios.get('http://localhost/serwer_klienci/meetings/get_meeting.php?id=' + props.meetingId)
             .then( res => {
                setFormData({
                  datetime: res.data.data,
@@ -61,12 +61,12 @@ export default function MeetingForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if(props.meetingId !== undefined) {
-      axios.put('http://localhost/serwer_klienci/update_meeting.php?id=' + props.meetingId, formData)
+      axios.put('http://localhost/serwer_klienci/meetings/update_meeting.php?id=' + props.meetingId, formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});
     } else {
-      axios.post('http://localhost/serwer_klienci/add_meeting.php', formData)
+      axios.post('http://localhost/serwer_klienci/meetings/add_meeting.php', formData)
            .then( res => window.location.replace(res.data))
            .catch( error => console.log(error))
            .then( () => {});

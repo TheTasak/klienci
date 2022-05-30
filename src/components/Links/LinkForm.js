@@ -19,18 +19,19 @@ export default function LinkForm(props) {
   });
 
   React.useEffect(() => {
-    axios.get('http://localhost/serwer_klienci/get_clients.php')
+    axios.get('http://localhost/serwer_klienci/clients/get_clients.php')
          .then( res => setClients(res.data))
          .catch( error => console.log(error))
          .then( () => {});
     if(props.linkId !== undefined) {
-      axios.get('http://localhost/serwer_klienci/get_link.php?id=' + props.linkId)
+      axios.get('http://localhost/serwer_klienci/links/get_link.php?id=' + props.linkId)
            .then( res => {
               setFormData({
                 id_recommendation: res.data.id_polecany,
                 id_source: res.data.id_zrodlo,
                 comment: res.data.komentarz == undefined ? "" : res.data.komentarz
               });
+              console.log(res);
             })
            .catch( error => console.log(error))
            .then( () => {});
@@ -40,7 +41,7 @@ export default function LinkForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if(props.linkId !== undefined) {
-      axios.put('http://localhost/serwer_klienci/update_link.php?id=' + props.linkId, formData)
+      axios.put('http://localhost/serwer_klienci/links/update_link.php?id=' + props.linkId, formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});
@@ -53,7 +54,7 @@ export default function LinkForm(props) {
           }
         });
       }
-      axios.post('http://localhost/serwer_klienci/add_link.php', formData)
+      axios.post('http://localhost/serwer_klienci/links/add_link.php', formData)
            .then( res => console.log(res.data))
            .catch( error => console.log(error))
            .then( () => {});
